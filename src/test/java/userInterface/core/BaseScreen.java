@@ -27,12 +27,16 @@ import static java.time.temporal.ChronoUnit.MILLIS;
 import static java.time.temporal.ChronoUnit.SECONDS;
 
 public class BaseScreen {
-    public AndroidDriver driver;
-    private WebDriverWait wait;
+    public AndroidDriver<WebElement> driver;
+    private final WebDriverWait wait;
 
-    public BaseScreen(AndroidDriver driver) {
+    public BaseScreen(AndroidDriver<WebElement> driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 20);
+    }
+
+    protected void waitForActivity(String activityName) {
+        wait.until(d -> driver.currentActivity().equals(activityName));
     }
 
     public String getSource() {
