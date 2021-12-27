@@ -1,5 +1,6 @@
 package testCases;
 
+import com.google.gson.Gson;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebElement;
@@ -29,11 +30,12 @@ public class BaseTest {
         caps.setCapability("deviceName", getDeviceName(adbName));
         caps.setCapability("noReset", true);
         caps.setCapability("automationName", "UiAutomator2");
-//        caps.setCapability("app", "C:\\Proyectos\\appium-base-framework\\app\\hbCustom.1.0.1.25.2 (Testing).apk");
-        caps.setCapability("appPackage", "com.instagram.android");
-        caps.setCapability("appActivity", "com.instagram.mainactivity.MainActivity");
+        caps.setCapability("app", "D:\\java\\appium-base-framework\\app\\hbCustom.1.0.1.37 (homologacionRelease).apk");
+//        caps.setCapability("appPackage", "com.instagram.android");
+//        caps.setCapability("appActivity", "com.instagram.mainactivity.MainActivity");
         caps.setCapability("uiautomator2ServerInstallTimeout", 200000);
         caps.setCapability("gpsEnabled", true);
+        System.out.println(new Gson().toJson(caps));
         driver = new AndroidDriver<>(new URL("http://localhost:4723/wd/hub"), caps);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return driver;
