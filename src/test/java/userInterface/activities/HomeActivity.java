@@ -10,6 +10,7 @@ import org.aspectj.weaver.ast.And;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import userInterface.core.BaseScreen;
+import userInterface.core.ScrollTo;
 
 public class HomeActivity extends BaseScreen {
     public HomeActivity(AndroidDriver<WebElement> driver) {
@@ -34,6 +35,11 @@ public class HomeActivity extends BaseScreen {
     private AndroidElement btnPerfil;
 
     public void tocarPerfil() {
-        tSingleTap(btnPerfil);
+//        tSingleTap(btnPerfil);
+        btnPerfil.click();
+    }
+
+    public void deslizarHaciaArriba() {
+        tScrollScreen(ScrollTo.UP);
     }
 }

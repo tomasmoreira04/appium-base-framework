@@ -101,7 +101,9 @@ public class BaseScreen {
 
     protected AndroidTouchAction tSingleTap(AndroidElement element) {
         AndroidTouchAction action = new AndroidTouchAction(driver);
-        return action.tap(TapOptions.tapOptions().withElement(ElementOption.element(element))).perform();
+        System.out.println(element.getCenter());
+        System.out.println(driver.manage().window().getSize());
+        return action.tap(TapOptions.tapOptions().withPosition(PointOption.point(element.getCenter())).withElement(ElementOption.element(element))).perform();
     }
 
     protected AndroidTouchAction tDoubleTap(AndroidElement element) {
