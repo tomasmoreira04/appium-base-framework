@@ -39,77 +39,77 @@ public class BaseScreen {
         wait.until(d -> driver.currentActivity().equals(activityName));
     }
 
-    public String getSource() {
+    protected String getSource() {
         return driver.getPageSource();
     }
 
-    public Location getGeolocation() {
+    protected Location getGeolocation() {
         return driver.location();
     }
 
-    public void setGeolocation(Location location) {
+    protected void setGeolocation(Location location) {
         driver.setLocation(location);
     }
 
-    public String getCurrentActivity() {
+    protected String getCurrentActivity() {
         return driver.currentActivity();
     }
 
-    public void toggleWifi() {
+    protected void toggleWifi() {
         driver.toggleWifi();
     }
 
-    public ScreenOrientation getOrientation() {
+    protected ScreenOrientation getOrientation() {
         return driver.getOrientation();
     }
 
-    public void setOrientation(ScreenOrientation orientation) {
+    protected void setOrientation(ScreenOrientation orientation) {
         driver.rotate(orientation);
     }
 
-    public void lockDevice() {
+    protected void lockDevice() {
         driver.lockDevice();
     }
 
-    public void lockDevice(int timeout) {
+    protected void lockDevice(int timeout) {
         driver.lockDevice(Duration.of(timeout, SECONDS));
     }
 
-    public void unLockDevice() {
+    protected void unLockDevice() {
         driver.unlockDevice();
     }
 
-    public boolean isDeviceLocked() {
+    protected boolean isDeviceLocked() {
         return driver.isDeviceLocked();
     }
 
-    public void pressAndroidKey(AndroidKey key) {
+    protected void pressAndroidKey(AndroidKey key) {
         driver.pressKey(new KeyEvent(key));
     }
 
-    public void pressAndHoldAndroidKey(AndroidKey key) {
+    protected void pressAndHoldAndroidKey(AndroidKey key) {
         driver.longPressKey(new KeyEvent(key));
     }
 
-    public void hideKeyboard() {
+    protected void hideKeyboard() {
         driver.hideKeyboard();
     }
 
-    public boolean isKeyboardShown() {
+    protected boolean isKeyboardShown() {
         return driver.isKeyboardShown();
     }
 
-    public AndroidTouchAction tSingleTap(AndroidElement element) {
+    protected AndroidTouchAction tSingleTap(AndroidElement element) {
         AndroidTouchAction action = new AndroidTouchAction(driver);
         return action.tap(TapOptions.tapOptions().withElement(ElementOption.element(element))).perform();
     }
 
-    public AndroidTouchAction tDoubleTap(AndroidElement element) {
+    protected AndroidTouchAction tDoubleTap(AndroidElement element) {
         AndroidTouchAction action = new AndroidTouchAction(driver);
         return action.tap(TapOptions.tapOptions().withTapsCount(2).withElement(ElementOption.element(element))).perform();
     }
 
-    public MultiTouchAction tPinchOpen(AndroidElement element) {
+    protected MultiTouchAction tPinchOpen(AndroidElement element) {
         MultiTouchAction multiAction = new MultiTouchAction(driver);
         AndroidTouchAction finger1 = new AndroidTouchAction(driver);
         AndroidTouchAction finger2 = new AndroidTouchAction(driver);
@@ -129,7 +129,7 @@ public class BaseScreen {
         return multiAction;
     }
 
-    public AndroidTouchAction tSwipe(AndroidElement element, SwipeTo swipe) {
+    protected AndroidTouchAction tSwipe(AndroidElement element, SwipeTo swipe) {
         AndroidTouchAction action = new AndroidTouchAction(driver);
         int x = element.getLocation().getX();
         int y = element.getLocation().getY();
@@ -148,7 +148,7 @@ public class BaseScreen {
         return partial;
     }
 
-    public AndroidTouchAction tScrollScreen(ScrollTo scroll) {
+    protected AndroidTouchAction tScrollScreen(ScrollTo scroll) {
         AndroidTouchAction action = new AndroidTouchAction(driver);
         Dimension dimension = driver.manage().window().getSize();
         int x = dimension.getWidth();
@@ -168,7 +168,7 @@ public class BaseScreen {
         return partial;
     }
 
-    public AndroidTouchAction tScrollElement(AndroidElement element, ScrollTo scroll) {
+    protected AndroidTouchAction tScrollElement(AndroidElement element, ScrollTo scroll) {
         AndroidTouchAction action = new AndroidTouchAction(driver);
         int x = element.getLocation().getX();
         int y = element.getLocation().getY();

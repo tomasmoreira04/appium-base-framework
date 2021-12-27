@@ -11,7 +11,7 @@
 
     <test name="Prueba" group-by-instances="true">
         <classes>
-            <class name="testCases.testSupport.TestLogin"/>
+            <class name="testCases.BasicTest"/>
         </classes>
     </test>
 
